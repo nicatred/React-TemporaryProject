@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Members from './components/Members'
 
 function App() {
+  state ={
+    members : [
+      {
+         id :1,
+         name:"Nicat",
+         salary:300
+      },
+      {
+        id :2,
+        name:"Ehmed",
+        salary:400
+     },
+     {
+      id :3,
+      name:"Saleh",
+      salary:500
+   }
+    ]
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Members members={this.state.members}/>
     </div>
   );
 }

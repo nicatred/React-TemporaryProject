@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { isVisible } from '@testing-library/user-event/dist/utils'
+// import PropTypes from 'prop-types'
+
 class Member extends Component {
-   state= {
+   state = {
      isVisible:false
    }
+   
    clicker = (e)=>{
        this.setState({
         isVisible : !this.state.isVisible
@@ -36,10 +37,10 @@ class Member extends Component {
   }
 }
 
-Member.propTypes ={
-    name : PropTypes.string.isRequired,
-    salary : PropTypes.string.isRequired
-}
+// Member.propTypes ={
+//     name : PropTypes.string.isRequired,
+//     salary : PropTypes.string.isRequired
+// }
 
 export default  Member;
 

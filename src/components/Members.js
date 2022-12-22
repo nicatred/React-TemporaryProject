@@ -16,7 +16,7 @@ import MemberConsumer from '../context';
      
                     members.map(member => {
                    return(
-                     <Member name = {member.name} salary = {member.salary}/>
+                     <Member name = {member.name} salary = {member.salary} id={member.id}/>
                          )
                               })
             }

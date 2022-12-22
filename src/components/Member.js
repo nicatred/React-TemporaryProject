@@ -1,27 +1,42 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
-
+import UserConsumer from '../context'
 class Member extends Component {
+
    state = {
-     isVisible:false
+     isVisible:true
    }
    
-   clicker = (e)=>{
+   hider = (e) =>{
        this.setState({
         isVisible : !this.state.isVisible
        })
    }
+
+   onDeleteUser =(dispatch,e) =>{
+   
+    const {id} = this.props;
+    dispatch({type:"DELETE_MEMBER",payload:id});
+   }
+   
    
   render() 
   {
+    
     const {name,salary}= this.props;
     const{isVisible}=this.state;
-    return (
+    
+    return (<UserConsumer>
+  {
+  value =>{
+    const{dispatch} = value;
+ 
+      return (
       <div className="container">
-     <div className="card mb-4" >
-  <div className="card-header d-flex justify-content-between" onClick ={ this.clicker}>
-    <h4 className="d-inline" >{name}  </h4>
-     <i className="fa-solid fa-trash" style={{cursor:"pointer"}} > </i>
+     <div className="card mb-4" style={!isVisible ? {backgroundColor:"darkgray",color:"white"} :null} >
+  <div className="card-header ">
+    <h4 className="d-inline" onClick ={ this.hider} >{name}  </h4>
+     <i className="fa-solid fa-trash" style={{cursor:"pointer"}} onClick = {this.onDeleteUser.bind(this,dispatch)}></i>
   </div>
   <div>
     {!isVisible ?
@@ -34,13 +49,10 @@ class Member extends Component {
 </div>
       </div>
     )
-  }
 }
-
-// Member.propTypes ={
-//     name : PropTypes.string.isRequired,
-//     salary : PropTypes.string.isRequired
-// }
-
+}
+    </UserConsumer>)
+      }
+    }
 export default  Member;
 
